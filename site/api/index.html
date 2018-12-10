@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>java接口 - 我的文档</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "java\u63a5\u53e3";
+    var mkdocs_page_input_path = "api.md";
+    var mkdocs_page_url = "/api/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> 我的文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">home</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">java接口</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#java">与Java后台定义的接口</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#11">1.1 轮询任务接口</a></li>
+        
+            <li><a class="toctree-l3" href="#12">1.2 机器人通知任务状态接口</a></li>
+        
+            <li><a class="toctree-l3" href="#13">1.3 机器人回推数据接口</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../python/">Python使用</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../work/">dowork</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../about/">about</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">我的文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>java接口</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="java">与Java后台定义的接口</h2>
+<h4 id="11">1.1 轮询任务接口</h4>
+<pre><code>uri：/api/task/taskManage?methodname=queryTask
+方法名：queryTask  
+支持版本号：1.0.0
+</code></pre>
+<p>请求参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>必填</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username</td>
+<td>是</td>
+<td>string</td>
+<td>目标系统账号</td>
+</tr>
+<tr>
+<td>password</td>
+<td>是</td>
+<td>string</td>
+<td>密码</td>
+</tr>
+<tr>
+<td>systemName</td>
+<td>是</td>
+<td>string</td>
+<td>系统名称（附表3）</td>
+</tr>
+<tr>
+<td>version</td>
+<td>是</td>
+<td>string</td>
+<td>版本号</td>
+</tr>
+</tbody>
+</table>
+<p>请求示例：</p>
+<pre><code>data:{
+    &quot;password&quot;:&quot;123456&quot;,
+    &quot;systemName&quot;:&quot;iscm&quot;,
+    &quot;version&quot;:&quot;1.0.0&quot;,
+    &quot;username&quot;:&quot;zhangsan&quot;
+    }
+</code></pre>
+
+<p>返回示例：</p>
+<pre><code>{
+    &quot;msg&quot;: &quot;success&quot;,
+    &quot;code&quot;: 0,
+    &quot;data&quot;: {
+        &quot;password&quot;: &quot;123456&quot;,
+        &quot;systemName&quot;: &quot;iscm&quot;,
+        &quot;methodName&quot;: &quot;queryzjsxDateByjrh&quot;,
+        &quot;username&quot;: &quot;zhangsan&quot;,
+        &quot;params&quot;: &quot;{\&quot;jrh\&quot;:&quot;&quot;,\&quot;abc\&quot;:&quot;&quot;}&quot;,
+        &quot;taskId&quot;: &quot;1031354660771856384&quot;
+    },
+    &quot;timestamp&quot;: 1534729089954
+}
+</code></pre>
+
+<p>注意：查询任务接口由于有账号密码等敏感信息，所以要对请求参数data的值进行AES 128位加密，加密因子双方约定，测试环境暂时是 "abcdefg"</p>
+<h4 id="12">1.2 机器人通知任务状态接口</h4>
+<pre><code>uri：/api/task/taskManage?methodname=sendTaskStatus  
+方法名：sendTaskStatus  
+支持版本号：1.0.0  
+请求参数说明：
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>必填</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>taskId</td>
+<td>是</td>
+<td>string</td>
+<td>任务Id</td>
+</tr>
+<tr>
+<td>taskStatus</td>
+<td>是</td>
+<td>int</td>
+<td>任务运行状态 （具体见 附表2）</td>
+</tr>
+<tr>
+<td>remark</td>
+<td>否</td>
+<td>string</td>
+<td>备注（错误原因或其他，可不填）</td>
+</tr>
+</tbody>
+</table>
+<p>请求示例：</p>
+<pre><code>data:{
+    &quot;password&quot;:&quot;123456&quot;,
+    &quot;systemName&quot;:&quot;iscm&quot;,
+    &quot;version&quot;:&quot;1.0.0&quot;,
+    &quot;username&quot;:&quot;zhangsan&quot;,
+    &quot;params&quot;:{
+        &quot;taskId&quot;:&quot;1031355536785801217&quot;,
+        &quot;taskStatus&quot;:-1,
+        &quot;remark&quot;:&quot;无&quot;
+        }
+    }
+</code></pre>
+
+<p>返回示例：</p>
+<pre><code>{
+    &quot;msg&quot;: &quot;success&quot;,
+    &quot;code&quot;: 0,
+    &quot;timestamp&quot;: 1534729366900
+}
+</code></pre>
+
+<h4 id="13">1.3 机器人回推数据接口</h4>
+<pre><code>uri：/api/task/taskManage?methodname=sendTaskData
+方法名：sendTaskData
+支持版本号：1.0.0
+</code></pre>
+<p>请求参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>必填</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>taskId</td>
+<td>是</td>
+<td>string</td>
+<td>任务Id</td>
+</tr>
+<tr>
+<td>taskData</td>
+<td>是</td>
+<td>string</td>
+<td>任务数据（json字符串）</td>
+</tr>
+<tr>
+<td>remark</td>
+<td>否</td>
+<td>string</td>
+<td>备注（错误原因或其他，可不填）</td>
+</tr>
+<tr>
+<td>请求示例：</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code>data:{
+    &quot;password&quot;:&quot;123456&quot;,
+    &quot;systemName&quot;:&quot;iscm&quot;,
+    &quot;version&quot;:&quot;1.0.0&quot;,
+    &quot;username&quot;:&quot;zhangsan&quot;,
+    &quot;params&quot;:{
+        &quot;taskId&quot;:&quot;1031355536785801217&quot;,
+        &quot;taskData&quot;:{&quot;zjsxDate&quot;:&quot;2018-01-05&quot;},
+        &quot;remark&quot;:&quot;无&quot;
+        }
+     }
+</code></pre>
+
+<p>返回示例：</p>
+<pre><code>{
+    &quot;msg&quot;: &quot;success&quot;,
+    &quot;code&quot;: 0,
+    &quot;timestamp&quot;: 1534729366900
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../python/" class="btn btn-neutral float-right" title="Python使用">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../python/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>
