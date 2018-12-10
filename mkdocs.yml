@@ -1,8 +1,0 @@
-site_name: 我的文档
-pages:
-- [index.md, home]
-- [api.md, java接口]
-- [python.md, Python使用]
-- [work.md, dowork]
-- [about.md, about]
-theme: readthedocs
